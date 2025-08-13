@@ -16,5 +16,14 @@
         }
       }
     }
-  }
+  },
+  "routes": [
+    {
+      "route": "*",
+      "allowedRoles": [
+        "anonymous",
+        "authenticated"
+      ]
+    }
+  ]
 }
