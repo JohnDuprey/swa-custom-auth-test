@@ -16,6 +16,7 @@
       "methods": [
         "get"
       ],
+      "statusCode": 200,
       "allowedRoles": [
         "anonymous"
       ]
