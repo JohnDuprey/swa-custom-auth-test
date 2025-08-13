@@ -1,1 +1,33 @@
-{"routes":[{"route":"/*","serve":"/index.html","statusCode":200}],"navigationFallback":{"rewrite":"/index.html"},"mimeTypes":{".json":"text/json"},"auth":{"rolesSource":"/api/roles","identityProviders":{"azureActiveDirectory":{"registration":{"openIdIssuer":"https://login.microsoftonline.com/common/v2.0","clientIdSettingName":"AZURE_CLIENT_ID","clientSecretSettingName":"AZURE_CLIENT_SECRET_APP_SETTING_NAME"}}}}}
+{
+  "routes": [
+    {
+      "route": "/api/*",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "statusCode": 200,
+      "allowedRoles": [
+        "authenticated"
+      ]
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  },
+  "mimeTypes": {
+    ".json": "text/json"
+  },
+  "auth": {
+    "rolesSource": "/api/roles",
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/common/v2.0",
+          "clientIdSettingName": "AZURE_CLIENT_ID",
+          "clientSecretSettingName": "AZURE_CLIENT_SECRET_APP_SETTING_NAME"
+        }
+      }
+    }
+  }
+}
