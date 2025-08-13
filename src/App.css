@@ -105,14 +105,154 @@
   .App-header h1 {
     font-size: 2rem;
   }
-  
+
   .App-header h2 {
     font-size: 1.2rem;
   }
-  
+
   .auth-button {
     min-width: 240px;
     padding: 14px 24px;
     font-size: 1rem;
+  }
+}
+
+/* Loading state */
+.loading {
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
+/* User info section */
+.user-info {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 40px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.user-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.user-info p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+  opacity: 0.9;
+}
+
+.logout-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* API data section */
+.api-data {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.expandable-section {
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.expand-button {
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  padding: 20px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.expand-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.expand-button.expanded {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.expand-button .icon {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.json-content {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.json-content pre {
+  color: #f8f9fa;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Mobile responsiveness for new components */
+@media (max-width: 768px) {
+  .user-info {
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+
+  .user-info h3 {
+    font-size: 1.5rem;
+  }
+
+  .expand-button {
+    padding: 15px;
+    font-size: 1.1rem;
+  }
+
+  .json-content {
+    padding: 15px;
+  }
+
+  .json-content pre {
+    font-size: 0.8rem;
+    padding: 10px;
   }
 }

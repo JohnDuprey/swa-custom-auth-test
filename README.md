@@ -7,7 +7,7 @@ A simple React application to test custom authentication with Azure Static Web A
 This app provides three authentication buttons that redirect to Azure Static Web Apps' built-in authentication endpoints:
 
 - **Microsoft (Azure AD)**: `/.auth/login/aad`
-- **Google**: `/.auth/login/google` 
+- **Google**: `/.auth/login/google`
 - **GitHub**: `/.auth/login/github`
 
 ## Getting Started
