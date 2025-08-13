@@ -18,7 +18,8 @@
       ],
       "statusCode": 200,
       "allowedRoles": [
-        "anonymous"
+        "anonymous",
+        "authenticated"
       ]
     }
   ],
