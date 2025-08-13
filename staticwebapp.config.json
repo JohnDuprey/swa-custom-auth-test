@@ -20,7 +20,6 @@
   "routes": [
     {
       "route": "*",
-      "statusCode": 200,
       "allowedRoles": [
         "anonymous",
         "authenticated"
