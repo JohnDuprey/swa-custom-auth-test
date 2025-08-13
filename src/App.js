@@ -13,17 +13,45 @@ function App() {
   }, []);
 
   const fetchUserData = async () => {
+    console.log("Attempting to fetch user data from /.auth/me");
     try {
       const response = await fetch("/.auth/me");
+      console.log("Response status:", response.status);
+      console.log("Response headers:", response.headers);
+
+      if (!response.ok) {
+        console.error("Response not OK:", response.status, response.statusText);
+        return;
+      }
+
       const data = await response.json();
+      console.log("Auth data received:", data);
+      setAuthMeData(data);
 
       if (data.clientPrincipal) {
+        console.log("User authenticated:", data.clientPrincipal);
         setUser(data.clientPrincipal);
-        setAuthMeData(data);
         fetchApiTestData();
+      } else {
+        console.log("No clientPrincipal found - user not authenticated");
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
+      // For local development, show a mock authenticated state
+      if (window.location.hostname === "localhost") {
+        console.log("Running locally - showing mock data");
+        const mockData = {
+          clientPrincipal: {
+            userId: "mock-user-123",
+            userDetails: "Local Development User",
+            identityProvider: "mock",
+            userRoles: ["anonymous", "authenticated"],
+          },
+        };
+        setAuthMeData(mockData);
+        setUser(mockData.clientPrincipal);
+        fetchApiTestData();
+      }
     } finally {
       setLoading(false);
     }
