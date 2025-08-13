@@ -1,0 +1,118 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 50px 20px;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.App-header h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+.App-header h2 {
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+.auth-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.auth-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 280px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.auth-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.auth-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.auth-button .icon {
+  font-size: 1.5rem;
+}
+
+.auth-button.microsoft {
+  background-color: #0078d4;
+  color: white;
+}
+
+.auth-button.microsoft:hover {
+  background-color: #106ebe;
+}
+
+.auth-button.google {
+  background-color: #4285f4;
+  color: white;
+}
+
+.auth-button.google:hover {
+  background-color: #3367d6;
+}
+
+.auth-button.github {
+  background-color: #333;
+  color: white;
+}
+
+.auth-button.github:hover {
+  background-color: #24292e;
+}
+
+.info {
+  max-width: 600px;
+  opacity: 0.8;
+}
+
+.info p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .App-header h1 {
+    font-size: 2rem;
+  }
+  
+  .App-header h2 {
+    font-size: 1.2rem;
+  }
+  
+  .auth-button {
+    min-width: 240px;
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+}
