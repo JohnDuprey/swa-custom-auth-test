@@ -1,28 +1,4 @@
 {
-  "routes": [
-    {
-      "route": "/api/*",
-      "methods": [
-        "get",
-        "post"
-      ],
-      "statusCode": 200,
-      "allowedRoles": [
-        "authenticated"
-      ]
-    },
-    {
-      "route": "/",
-      "methods": [
-        "get"
-      ],
-      "statusCode": 200,
-      "allowedRoles": [
-        "anonymous",
-        "authenticated"
-      ]
-    }
-  ],
   "navigationFallback": {
     "rewrite": "/index.html"
   },
