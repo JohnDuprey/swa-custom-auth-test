@@ -29,7 +29,6 @@ function App() {
     try {
       const response = await fetch("/.auth/me");
       console.log("Response status:", response.status);
-      console.log("Response headers:", response.headers);
 
       if (!response.ok) {
         console.error("Response not OK:", response.status, response.statusText);
@@ -46,6 +45,8 @@ function App() {
         fetchApiTestData();
       } else {
         console.log("No clientPrincipal found - user not authenticated");
+        setUser(null);
+        setApiTestData(null);
       }
     } catch (error) {
       console.error("Error fetching user data:", error);
@@ -71,6 +72,26 @@ function App() {
 
   useEffect(() => {
     fetchUserData();
+
+    // Listen for when the window regains focus (user returns from auth flow)
+    const handleFocus = () => {
+      console.log("Window regained focus - checking auth status");
+      fetchUserData();
+    };
+
+    // Listen for storage events (in case auth state changes in another tab)
+    const handleStorageChange = () => {
+      console.log("Storage changed - checking auth status");
+      fetchUserData();
+    };
+
+    window.addEventListener("focus", handleFocus);
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("focus", handleFocus);
+      window.removeEventListener("storage", handleStorageChange);
+    };
   }, [fetchUserData]);
 
   const handleLogin = (provider) => {
