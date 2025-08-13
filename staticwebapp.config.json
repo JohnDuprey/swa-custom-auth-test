@@ -1,1 +1,40 @@
-{"navigationFallback":{"rewrite":"/index.html"},"mimeTypes":{".json":"text/json"},"routes":[{"route":"/api/*","allowedRoles":["authenticated"]},{"route":"/*","allowedRoles":["anonymous","authenticated"]}]}
+{
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  },
+  "mimeTypes": {
+    ".json": "text/json"
+  },
+  "auth": {
+    "rolesSource": "/api/roles",
+    "identityProviders": {
+      "azureActiveDirectory": {
+        "registration": {
+          "openIdIssuer": "https://login.microsoftonline.com/common/v2.0",
+          "clientIdSettingName": "AZURE_CLIENT_ID",
+          "clientSecretSettingName": "AZURE_CLIENT_SECRET_APP_SETTING_NAME"
+        },
+        "login": {
+          "loginParameters": [
+            "resource=https://graph.microsoft.com"
+          ]
+        }
+      }
+    }
+  },
+  "routes": [
+    {
+      "route": "/api/*",
+      "allowedRoles": [
+        "authenticated"
+      ]
+    },
+    {
+      "route": "/*",
+      "allowedRoles": [
+        "anonymous",
+        "authenticated"
+      ]
+    }
+  ]
+}
