@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./App.css";
 
 function App() {
@@ -8,11 +8,23 @@ function App() {
   const [apiTestData, setApiTestData] = useState(null);
   const [expandedSection, setExpandedSection] = useState(null);
 
-  useEffect(() => {
-    fetchUserData();
+  const fetchApiTestData = useCallback(async () => {
+    try {
+      const response = await fetch("/api/test");
+      const data = await response.json();
+      setApiTestData(data);
+    } catch (error) {
+      console.error("Error fetching API test data:", error);
+      // If API endpoint doesn't exist, create a mock response
+      setApiTestData({
+        message: "API endpoint not available",
+        timestamp: new Date().toISOString(),
+        status: "mock_response",
+      });
+    }
   }, []);
 
-  const fetchUserData = async () => {
+  const fetchUserData = useCallback(async () => {
     console.log("Attempting to fetch user data from /.auth/me");
     try {
       const response = await fetch("/.auth/me");
@@ -55,23 +67,11 @@ function App() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [fetchApiTestData]);
 
-  const fetchApiTestData = async () => {
-    try {
-      const response = await fetch("/api/test");
-      const data = await response.json();
-      setApiTestData(data);
-    } catch (error) {
-      console.error("Error fetching API test data:", error);
-      // If API endpoint doesn't exist, create a mock response
-      setApiTestData({
-        message: "API endpoint not available",
-        timestamp: new Date().toISOString(),
-        status: "mock_response",
-      });
-    }
-  };
+  useEffect(() => {
+    fetchUserData();
+  }, [fetchUserData]);
 
   const handleLogin = (provider) => {
     window.location.href = `/.auth/login/${provider}`;
