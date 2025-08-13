@@ -24,16 +24,10 @@
   },
   "routes": [
     {
-      "route": "/api/*",
+      "route": "*",
       "allowedRoles": [
-        "authenticated"
-      ]
-    },
-    {
-      "route": "/*",
-      "allowedRoles": [
-        "anonymous",
-        "authenticated"
+        "authenticated",
+        "anonymous"
       ]
     }
   ]
