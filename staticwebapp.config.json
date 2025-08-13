@@ -6,7 +6,7 @@
     ".json": "text/json"
   },
   "auth": {
-    "rolesSource": "/api/roles",
+    "rolesSource": "/api/GetRoles",
     "identityProviders": {
       "azureActiveDirectory": {
         "registration": {
